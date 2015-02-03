@@ -264,8 +264,9 @@ INT_PTR CALLBACK TimerDialgProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM l
 		{
 			if(isTimerStart == false)
 			{
-				char sztextC[4];
-				memset(sztextC,0,sizeof(sztextC));
+				char sztextC[8];
+				int len = sizeof(sztextC);
+				memset(sztextC,0,len);
 				//Сʱ
 				HWND hWndEditHour = ::GetDlgItem(hDlg,IDC_EDIT_HOUR);
 				GetWindowText(hWndEditHour,(LPWSTR)sztextC,4);
