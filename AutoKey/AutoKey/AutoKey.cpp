@@ -266,23 +266,30 @@ INT_PTR CALLBACK TimerDialgProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM l
 			{
 				char sztextC[8];
 				int len = sizeof(sztextC);
+				char c_str[8];
 				memset(sztextC,0,len);
+				memset(c_str,0,sizeof(c_str));
 				//–° ±
 				HWND hWndEditHour = ::GetDlgItem(hDlg,IDC_EDIT_HOUR);
 				GetWindowText(hWndEditHour,(LPWSTR)sztextC,4);
-				int hour = atoi(sztextC);
+				 WideCharToMultiByte (CP_UTF8, 0, (LPWSTR)sztextC, -1, c_str, len, NULL,NULL);
+				int hour = atoi(c_str);
 			
 				memset(sztextC,0,sizeof(sztextC));
+				memset(c_str,0,sizeof(c_str));
 				//∑÷÷”
 				HWND hWndEditMin = ::GetDlgItem(hDlg,IDC_EDIT_MINUTE);
 				GetWindowText(hWndEditMin,(LPWSTR)sztextC,4);
-				int minute = atoi(sztextC);
+				 WideCharToMultiByte (CP_UTF8, 0, (LPWSTR)sztextC, -1, c_str, len, NULL,NULL);
+				int minute = atoi(c_str);
 			
 				memset(sztextC,0,sizeof(sztextC));
+				memset(c_str,0,sizeof(c_str));
 				//√Î
 				HWND hWndEditSecond = ::GetDlgItem(hDlg,IDC_EDIT_SECOND);
 				GetWindowText(hWndEditSecond,(LPWSTR)sztextC,4);
-				int second = atoi(sztextC);
+				 WideCharToMultiByte (CP_UTF8, 0, (LPWSTR)sztextC, -1, c_str, len, NULL,NULL);
+				int second = atoi(c_str);
 
 				int interval = ((hour * 60 * 60) + (minute * 60) +second) * 1000;
 
